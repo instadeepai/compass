@@ -1,0 +1,2 @@
+_target_: compass.environments.PoppyTSP
+num_cities: 100

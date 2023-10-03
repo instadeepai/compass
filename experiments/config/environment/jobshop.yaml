@@ -1,0 +1,5 @@
+_target_: compass.environments.PoppyJobShop
+num_jobs: 10
+num_machines: 10
+max_op_duration: 99
+episode_horizon: 1250

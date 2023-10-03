@@ -1,0 +1,53 @@
+defaults:
+  - /environment: cvrp
+  - /networks: cvrp
+
+num_devices: -1 # Inherit from main.
+use_half_precision: False
+problem_seed: 0
+
+batch_size: 32 #32 #64 #4 #8 #64 # Todo: ensure num_problems, batch_size and num_devices are compatible
+validation_pop_size: 16 #16 #32
+ref_pop_size: 16 #16 #32
+
+behavior_amplification: ${..behavior_amplification}
+
+use_augmentations: False #False # going to multiply by 8 the nb of evaluations
+
+num_starting_points: -1
+compute_expensive_metrics: False
+
+budget: 1600 # increased budget because no augmentation
+
+shift_scale: 0
+
+cmaes_sigma: 100.0
+num_cmaes_states: 3
+
+new_acting_keys: True
+update_behavior_markers: True
+use_cmaes: True
+use_poppy_strategy: False
+
+# if not none, will overwrite the three params above
+strategy: behavior-cmaes # "greedy-rollouts" # none, "naive-rollouts", "behavior-sampling", "behavior-cmaes"
+
+rollout:
+  policy:
+    temperature: 0
+  encoder_pmap_axis: "batch" # 'pop' or 'batch'
+  decoder_pmap_axis: "batch" # 'pop' or 'batch'
+
+  decoder_conditions:
+    query: true
+    key: true
+    value: true
+
+checkpointing:
+  restore_path: "data/checkpoints/cvrp/compass"
+  checkpoint_fname_load: "checkpoint"
+
+problems:
+  load_problem: False #True
+  load_path: "data/validation_sets/vrp150_test_small_seed1235.pkl"
+  num_problems: 1024 #1024 # 1024

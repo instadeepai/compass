@@ -1,0 +1,8 @@
+num_layers_machines: 1
+num_layers_operations: 1
+num_layers_joint_machines_jobs: 2
+transformer_num_heads: 8
+transformer_key_size: 16
+transformer_mlp_units: [128]
+actor_decoder_mlp_units: [512]
+critic_decoder_mlp_units: [512]

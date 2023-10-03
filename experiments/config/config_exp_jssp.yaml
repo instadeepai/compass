@@ -1,0 +1,65 @@
+defaults:
+  - environment: jobshop
+  - networks: jobshop
+  - validation: config_validate_jssp
+  - slowrl: config_slowrl_jssp
+
+
+algo_name: "poppy_continuous" # purely descriptive
+env_name: "jssp" # purely descriptive
+
+seed: 0
+num_devices: -1
+
+method: "compass"
+num_steps: 150000 # 5500000 # 4600000 # 4416500 # 20000000
+batch_size: 8 # TODO: add check it's divisible by num_devices if needed.
+training_sample_size: 16
+behavior_dim: 16
+behavior_amplification: 100
+num_starting_positions: 20
+
+num_jit_steps: 10
+use_half_precision: False
+
+checkpoint_freq: 1000
+checkpointing:
+  directory: "checkpoints/"
+  checkpoint_fname_load: "checkpoint"
+  checkpoint_fname_save: "checkpoint"
+  save_checkpoint: True
+  intermediate_saving_frequency: 5000
+  keep_best_checkpoint: True
+  overwrite_checkpoints: True
+  restore_path: "data/checkpoints/jssp/single"  # Path to a checkpoint to be loaded (False -> do not load anything)
+  restore_optimizer: False  # Whether to load the optimizer from the checkpoint
+  zero_init: True
+
+rollout:
+  policy:
+    temperature: 1
+  encoder_pmap_axis: "batch" # 'pop' or 'batch'
+  decoder_pmap_axis: "batch" # 'pop' or 'batch'
+
+  decoder_conditions:
+    query: true
+    key: true
+    value: true
+
+use_poppy_objective: True
+use_poppy_hard_objective: True
+use_poppy_diff_objective: True
+optimizer:
+  lr: 1e-4 #1e-4
+  num_gradient_accumulation_steps: 16
+c_crit: 1
+
+validation_freq: 200
+
+logger:
+  terminal:
+    label: ''
+    time_delta: 1
+  neptune:
+    name: 'COMPASS-JobShop'
+    project: 'project'

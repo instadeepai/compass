@@ -1,0 +1,33 @@
+defaults:
+  - /environment: cvrp
+  - /networks: cvrp_pomo
+
+num_devices: -1 # Inherit from main.
+use_half_precision: False
+problem_seed: 0
+
+batch_size: 64 #8 #64 # Todo: ensure num_problems, batch_size and num_devices are compatible
+use_augmentations: False #False # going to multiply by 8 the nb of evaluations
+num_starting_points: -1
+compute_expensive_metrics: False
+
+use_poppy_strategy: False
+
+# eas specific, hp from EAS paper
+budget: 1600 #3200
+imitation_coef: 0.0063  # CVRP
+optimizer:
+    learning_rate: 0.0049 # (CVRP)
+    num_gradient_accumulation_steps: 8
+
+policy:
+  temperature: 1
+
+checkpointing:
+  restore_path: "data/v1_models/cvrp/pomo"
+  checkpoint_fname_load: "checkpoint"
+
+problems:
+  load_problem: False # True
+  load_path: "data/validation/vrp100_test_seed1234.pkl"
+  num_problems: 1024 # 1024

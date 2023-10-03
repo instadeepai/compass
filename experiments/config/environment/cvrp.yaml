@@ -1,0 +1,3 @@
+_target_: compass.environments.PoppyCVRP
+num_nodes: 100
+norm_factor: 50
