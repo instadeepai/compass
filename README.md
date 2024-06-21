@@ -117,4 +117,6 @@ from Google's [TPU Research Cloud](https://sites.research.google/trc/about/) (TR
 <a href="https://github.com/surana01" title="Shikha Surana"><img src="https://github.com/surana01.png" height="auto" width="50" style="border-radius:50%"></a>
 <a href="https://github.com/nathangrinsztajn" title="Nathan Grinsztajn"><img src="https://github.com/nathangrinsztajn.png" height="auto" width="50" style="border-radius:50%"></a>
 <a href="https://github.com/clement-bonnet" title="Clément Bonnet"><img src="https://github.com/clement-bonnet.png" height="auto" width="50" style="border-radius:50%"></a>
+<a href="https://github.com/arnupretorius" title="Arnu Pretorius"><img src="https://github.com/arnupretorius.png" height="auto" width="50" style="border-radius:50%"></a>
+<a href="https://github.com/alaterre" title="Alex Laterre"><img src="https://github.com/alaterre.png" height="auto" width="50" style="border-radius:50%"></a>
 <a href="https://github.com/tomdbar" title="Thomas D. Barrett"><img src="https://github.com/tomdbar.png" height="auto" width="50" style="border-radius:50%"></a>
