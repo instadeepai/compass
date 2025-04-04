@@ -186,6 +186,20 @@ def init_training_state(
             offset_size=cfg.behavior_dim,
             layers_names=layers_names,
         )
+    else:
+        # init conditioned decoder params if no decoder params are provided (training from scratch)
+        _dummy_embeddings = networks.encoder_fn.apply(encoder_params, _dummy_obs.problem)
+        _dummy_behavior_marker = jnp.zeros(shape=(cfg.behavior_dim))
+        decoder_conditions = cfg.rollout.decoder_conditions
+        conditioned_decoder_params = networks.decoder_fn.init(
+            decoder_key,
+            _dummy_obs,
+            _dummy_embeddings,
+            _dummy_behavior_marker,
+            decoder_conditions.query,
+            decoder_conditions.key,
+            decoder_conditions.value,
+        )
 
     # define the behavior markers
     behavior_markers = jnp.zeros((cfg.training_sample_size, cfg.behavior_dim))

@@ -10,7 +10,7 @@ DOCKER_BUILD_ARGS = \
 	--build-arg USER_ID=$(USER_ID) \
 	--build-arg GROUP_ID=$(GROUP_ID)
 
-DOCKER_RUN_FLAGS = --rm --privileged -p ${PORT}:${PORT} --network host
+DOCKER_RUN_FLAGS = --rm --privileged -p ${PORT}:${PORT} --network host --gpus all
 DOCKER_IMAGE_NAME = docker_image
 DOCKER_CONTAINER_NAME = docker_container
 
